@@ -1,0 +1,12 @@
+matplotlib
+networkx
+numpy
+pyro-ppl
+scipy
+torch
+torchvision
+tqdm
+utils
+h5py
+pandas
+scikit_learn
