@@ -13,9 +13,14 @@ pip install -r requirements.txt
 ### How to run
 You can use <i><b> trainer.py </b></i> to run the experiments. You can specify the model, dataset and hyperparameters using <i><b>config.py</b></i> or by passing them as command line arguments to  <i> trainer.py </i>. For example,
  
- To train EinsumNet+LRS on the 3D dataset KNOTTED, you may run:
+To train EinsumNet+LRS on the 3D dataset KNOTTED, you may run:
 ```shell
 python trainer.py --dataset KNOTTED --model LinearSplineEinsumFlow   --config '{"log_freq":10, "lr":0.001, "epochs":200}' --graph random_binary_tree
+```
+
+Similarly, to train EinsumNet on the 3D dataset KNOTTED, you may run:
+```shell
+python trainer.py --dataset KNOTTED --model EinsumNet   --config '{"log_freq":10, "lr":0.001, "epochs":200}' --graph random_binary_tree
 ```
 
 ## Citation
