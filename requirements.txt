@@ -1,12 +1,12 @@
-matplotlib
-networkx
-numpy
-pyro-ppl
-scipy
-torch
-torchvision
-tqdm
-utils
-h5py
-pandas
-scikit_learn
+matplotlib==3.6.0
+networkx==2.8.7
+numpy==1.23.1
+pyro-ppl==1.8.2
+scipy==1.10.0
+torch==1.12.1+cu102 torchvision==0.13.1+cu102 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu102
+tqdm==4.64.1
+utils==1.0.1
+h5py==3.7.0
+numpy==1.23.1
+pandas==1.5.2
+scikit_learn==1.2.0

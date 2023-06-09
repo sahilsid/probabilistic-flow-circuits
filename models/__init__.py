@@ -6,5 +6,4 @@ _MODELS = {
     "EinsumNet"                         :   EinsumNet,
     "LinearSplineEinsumFlow"            :   LinearSplineEinsumFlow,
     "QuadraticSplineEinsumFlow"         :   QuadraticSplineEinsumFlow,
-    "AffineEinsumFlow"                  :   AffineEinsumFlow,
 }

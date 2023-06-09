@@ -11,9 +11,5 @@ class QuadraticSplineEinsumFlow(TractableModel):
         self.leaf_distribution = QuadraticRationalSpline
         super().__init__(config)
 
-class AffineEinsumFlow(TractableModel):
-    def __init__(self, config):
-        self.leaf_distribution = AffineGaussian
-        super().__init__(config)
     
     

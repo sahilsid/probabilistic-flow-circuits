@@ -35,6 +35,7 @@ class ExperimentConfig():
     num_samples_to_save     = 64
     resume                  = True 
     eval_batch_size         = 2000
+    trial                   = 1
     
     def __init__(self,**kwargs):
         for key,value in kwargs.items():

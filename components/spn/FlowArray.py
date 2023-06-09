@@ -185,46 +185,10 @@ class FlowArray(NormalArray):
         self.leaf_optimizer.step()
         self.leaf_optimizer.zero_grad()
 
-class TranslatedGaussian(FlowArray):
-    """Implementation of Leaf distributions using Linear Rational Spline Based Normalizing Flows."""
 
-    def __init__(self, num_var, num_dims, array_shape, n_flows=1, use_em=False, device=torch.device('cuda')):
-        
-        super(TranslatedGaussian, self).__init__(num_var, num_dims, array_shape, use_em=use_em, device=device)
-        transforms = []
-        for _ in range(n_flows):
-            transforms += [IndexedTranslate(self.independednt_dims, self.num_dims)]
-        self.transforms =  torch.nn.ModuleList(transforms)
-        self.initialize_flow()
-       
-class ScaledGaussian(FlowArray):
-    """Implementation of Leaf distributions using Linear Rational Spline Based Normalizing Flows."""
-
-    def __init__(self, num_var, num_dims, array_shape, n_flows=1, use_em=False, device=torch.device('cuda')):
-        
-        super(ScaledGaussian, self).__init__(num_var, num_dims, array_shape, use_em=use_em, device=device)
-        transforms = []
-        for _ in range(n_flows):
-            transforms += [IndexedScale(self.independednt_dims, self.num_dims)]
-        self.transforms =  torch.nn.ModuleList(transforms)
-        self.initialize_flow()
- 
-class HouseholderGaussian(FlowArray):
-    """Implementation of Leaf distributions using Linear Rational Spline Based Normalizing Flows."""
-
-    def __init__(self, num_var, num_dims, array_shape, n_flows=1, use_em=False, device=torch.device('cuda')):
-        super(HouseholderGaussian, self).__init__(num_var, num_dims, array_shape, use_em=use_em, device=device)
-        transforms = []
-        for _ in range(n_flows):
-            transforms += [
-                MixtureHouseholder(self.independednt_dims,self.num_dims)
-            ]
-        self.transforms =  torch.nn.ModuleList(transforms)
-        self.initialize_flow()      
-        
 class LinearRationalSpline(FlowArray):
     """Implementation of Leaf distributions using Linear Rational Spline Based Normalizing Flows."""
-    def __init__(self, num_var, num_dims, array_shape, n_flows=1, count_bins=32, bound=8, use_em=False, use_student=False, device=torch.device('cuda')):
+    def __init__(self, num_var, num_dims, array_shape, n_flows=1, count_bins=16, bound=20, use_em=False, use_student=False, use_bn=True, device=torch.device('cuda')):
         super(LinearRationalSpline, self).__init__(num_var, num_dims, array_shape, use_em=use_em, device=device)
         transforms = []
         if(use_student):
@@ -232,6 +196,8 @@ class LinearRationalSpline(FlowArray):
             self.base_dist_params = [3*torch.ones(num_dims).to(device),  torch.zeros(num_dims).to(device),  torch.ones(num_dims).to(device)]
             self.base_dist   = self.base_dist_type(*self.base_dist_params)
         for _ in range(n_flows):
+            if(use_bn):
+                transforms += [dist.transforms.BatchNorm(num_dims)]
             transforms += [MixtureSpline(self.independednt_dims, self.num_dims, count_bins=count_bins, order='linear',bound=bound)]
         self.transforms =  torch.nn.ModuleList(transforms)
         self.initialize_flow()

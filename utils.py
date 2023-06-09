@@ -59,7 +59,7 @@ def get_visualization_fn(num_vars, dataset_name):
 
 def visualize_2d(model, config, dataset, save_dir, epoch=0):
     real_data = dataset.val.x
-    gen_data  = model.sample(len(real_data))
+    gen_data  = model.sample(len(real_data)).cpu().numpy()
     
     fig = plt.figure(figsize=(8,4))
     ax1 = fig.add_subplot(121)
@@ -75,7 +75,7 @@ def visualize_2d(model, config, dataset, save_dir, epoch=0):
                 
 def visualize_3d(model, config, dataset, save_dir, epoch=0):
     real_data = dataset.val.x[np.random.choice(np.arange(0, len(dataset.val.x)),1000)]
-    gen_data  = model.sample(len(real_data))
+    gen_data  = model.sample(len(real_data)).cpu().numpy()
     
     fig = plt.figure(figsize=(8,4))
     ax1 = fig.add_subplot(121, projection='3d')

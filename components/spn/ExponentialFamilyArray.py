@@ -45,7 +45,7 @@ class ExponentialFamilyArray(torch.nn.Module):
     Please see docstrings of these functions below, for further details.
     """
 
-    def __init__(self, num_var, num_dims, array_shape, num_stats, use_em):
+    def __init__(self, num_var, num_dims, array_shape, num_stats, use_em, **kwargs):
         """
         :param num_var: number of random variables (int)
         :param num_dims: dimensionality of random variables (int)

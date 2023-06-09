@@ -81,9 +81,9 @@ class HELIX(Base):
        
 class BentLISSAJOUS(Base):
     def __init__(self):
-        super(BentLISSAJOUS, self).__init__()
         self.std = 0.1
         self.scale = 4
+        super(BentLISSAJOUS, self).__init__()
         
     def sample(self):
         n = self.npoints
@@ -120,9 +120,9 @@ class DisjointCIRCLES(Base):
 
 class TwistedEIGHT(Base):
     def __init__(self):
-        super(TwistedEIGHT, self).__init__()
         self.std = 0.1
         self.scale = 4
+        super(TwistedEIGHT, self).__init__()
         
     def sample(self):
         n = self.npoints
@@ -139,9 +139,9 @@ class TwistedEIGHT(Base):
     
 class InterlockedCIRCLES(Base):
     def __init__(self):
-        super(InterlockedCIRCLES, self).__init__()
         self.std = 0.1
         self.scale = 4
+        super(InterlockedCIRCLES, self).__init__()
         
     def sample(self):
         n = self.npoints

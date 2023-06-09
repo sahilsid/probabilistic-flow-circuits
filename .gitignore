@@ -2,10 +2,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+venv/
 # C extensions
 *.so
-
+scripts/
 # Distribution / packaging
 .Python
 build/
@@ -19,6 +19,7 @@ lib64/
 parts/
 sdist/
 var/
+tables/
 wheels/
 pip-wheel-metadata/
 share/python-wheels/
